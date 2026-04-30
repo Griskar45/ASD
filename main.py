@@ -1,23 +1,28 @@
 import pygame
-import random
+import sys
 
-COLOR_WALL = (40, 40, 40)
-COLOR_PATH = (230, 230, 230)
-COLOR_START = (100, 255, 100)
-COLOR_END = (255, 100, 100)
+# Размеры окна
+WIDTH = 800
+HEIGHT = 600
 
-class Maze:
-    def __init__(self, cols, rows, cell_size):
-        self.cols = cols
-        self.rows = rows
-        self.cell_size = cell_size
-        # Инициализируй всю сетку стенами (1)
-        self.grid = [[1] * cols for _ in range(rows)]
-        # Задай старт и финиш (пока можно вручную)
-        self.start = (1, 1)
-        self.end = (cols - 2, rows - 2)
+pygame.init()
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Maze")
+clock = pygame.time.Clock()
 
-    def draw(self, surface):
-        # закрась клетки: для стены один цвет, для прохода — другой
-        # особо отметь старт и финиш
-        pass
+running = True
+while running:
+    # Обработка выхода
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # Заливаем фон чёрным
+    screen.fill((0, 0, 0))
+
+    # Обновляем экран
+    pygame.display.flip()
+    clock.tick(60)
+
+pygame.quit()
+sys.exit()
